@@ -1,0 +1,148 @@
+body {
+    background-color: black;
+    color: #CE8C39;
+}
+
+h1, h2, h3 {
+    color: #AB4E00;
+}
+
+nav.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+.stats {
+    padding: 1%;
+    background-color: #333;
+    font-size: larger;
+    margin: 0;
+    color: #999;
+}
+
+.navbar-brand.xs-stats {
+    top: 0px;
+    position: absolute;
+    width: 100%;
+    height: 74%;
+    overflow: hidden;
+}
+
+h2.xs-stats {
+    margin-top: 15px;
+}
+
+button.navbar-toggle {
+    z-index: 1;
+    background-color: #222;
+}
+
+table tr:hover {
+    background-color: #111;
+}
+
+button.btn {
+    background-color: #333;
+    color: #E4CBB6;
+}
+
+button.btn:active, button.btn:hover, button.btn:focus {
+    background-color: #666;
+    color: #DDF;
+}
+
+.modal-body.cities button.btn {
+    margin: 5px;
+}
+
+.modal-body.cities button.btn.current {
+    color: #AB4E00;
+}
+
+.modal-body.cities button.btn.current:hover {
+    color: black;
+}
+
+input.number.form-control {
+    display: inline;
+    width: 40%;
+    background-color: #E4CBB6;
+    color: black;
+}
+
+input.number + .btn, input.number + .btn + .btn {
+    width: 25%;
+}
+
+.form-group.has-error input {
+    color: firebrick;
+    background-color: #511111;
+}
+
+.news.visible-xs {
+    margin-bottom: -15px;
+    margin-top: 5px;
+}
+
+.news ul {
+    list-style: none;
+    padding-left: 8%;
+}
+
+.news .move {
+    color: royalblue;
+}
+
+.news .drug, .news .bonus {
+    color: forestgreen;
+}
+
+.news .error {
+    color: firebrick;
+}
+
+.news li:before {
+    content: " ";
+    font-family: 'Glyphicons Halflings';
+}
+
+.news .bonus:before {
+    content: " ";
+}
+
+.news .move:before {
+    content: " ";
+}
+
+.news .drug:before {
+    content: " ";
+}
+
+.news .error:before {
+    content: " ";
+}
+
+label.form-group {
+    width: 100%;
+}
+
+#modal-high-score ul {
+    font-size: large;
+    list-style: none;
+}
+
+.modal-content {
+    background-color: #111;
+}
+
+.modal-header {
+    border-bottom: solid 2px #010101;
+}
+
+.modal-header .close {
+    color: white;
+}
+
+.modal-footer {
+    border-top: solid 2px #010101;
+}

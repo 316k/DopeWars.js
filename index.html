@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>DopeWars.js</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap -->
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="assets/css/style.css" rel="stylesheet" media="screen">
+    </head>
+    <body>
+        <div class="container" style="width: 100%; padding: 0">
+            <nav class="navbar navbar-inverse" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <span class="navbar-brand visible-xs xs-stats"><span class="city"></span> <span class="day"></span>/<span class="end"></span></span>
+            </div>
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-bookmark"></i> Game <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="new-game" href="#">New Game</a></li>
+                                <li><a class="new-name" href="#">Change your name</a></li>
+                                <li><a href="#modal-high-score" data-toggle="modal">High Scores</a></li>
+                                <li><a href="#modal-about" data-toggle="modal">About</a></li>
+                            </ul>
+                        </li>
+                        <li><a data-toggle="modal" href="#modal-cities"><i class="glyphicon glyphicon-send"></i> Move !</a></li>
+                        <li><a data-toggle="modal" href="#modal-pawn-shop"><i class="glyphicon glyphicon-barcode"></i> Pawn Shop</a></li>
+                        <li><a data-toggle="modal" href="#modal-inventory"><i class="glyphicon glyphicon-list-alt"></i> Inventory</a></li>
+                        <li><a class="stats_toggle hidden-xs" href="#"><i class="glyphicon glyphicon-stats"></i> Stats</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="col-md-12 stats hidden-xs">
+                <div class="col-md-3 col-xs-4">
+                    <i class="glyphicon glyphicon-map-marker"></i> <span class="city"></span><br />
+                    <i class="glyphicon glyphicon-calendar"></i> Day <span class="day"></span>/<span class="end"></span>
+                </div>
+                <div class="col-md-3 col-xs-4">
+                    <i class="glyphicon glyphicon-usd"></i> Cash : <span class="cash"></span>$<br />
+                    <i class="glyphicon glyphicon-screenshot"></i> Guns : <span class="guns"></span>
+                </div>
+                <div class="col-md-3">
+                    <i class="glyphicon glyphicon-link"></i> Debt : <span class="debt"></span>$<br />
+                    <i class="glyphicon glyphicon-heart"></i> Health : <span class="health"></span>
+                </div>
+                <div class="col-md-3 hidden-xs">
+                    <i class="glyphicon glyphicon-briefcase"></i> Stock : <span class="used_space"></span>/<span class="total_space"></span><br />
+                    <i class="glyphicon glyphicon-credit-card"></i> Bank account : <span class="bank_deposit"></span> $<br />
+                </div>
+            </div>
+            <div class="col-md-4 news visible-xs">
+                <ul>
+                </ul>
+            </div>
+            <div class="col-md-6 col-md-offset-1">
+                <h2 class="visible-xs xs-stats">Coat <span class="used_space"></span>/<span class="total_space"></span> - <span class="cash"></span> $</h2>
+                <h2 class="hidden-xs">Drugs</h2>
+                <table class="table table-condensed drugs">
+                    <tbody>
+                        <tr>
+                            <th>Item</th>
+                            <th class="text-center">Stock</th>
+                            <th class="text-center">Value</th>
+                            <th class="text-center"><i class="glyphicon glyphicon-shopping-cart"></i></th>
+                            <th class="text-center"><i class="glyphicon glyphicon-usd"></i></th>
+                        </tr>
+                        <tr data-drug="0">
+                            <td>Item</td>
+                            <td class="text-center">Qte</td>
+                            <td class="text-right">Price</td>
+                            <td class="hidden-xs"><input type="number" min="0" value="0" class="form-control number" /> <button class="btn buy-max">Max</button> <button class="btn buy">Buy</button></td>
+                            <td class="hidden-xs"><input type="number" min="0" value="0" class="form-control number" /> <button class="btn sell-max">Max</button> <button class="btn sell">Sell</button></td>
+                            <td class="visible-xs"><button data-toggle="modal" class="btn buy-xs" href="#modal-transaction">Buy</button></td>
+                            <td class="visible-xs"><button data-toggle="modal" class="btn sell-xs" href="#modal-transaction">Sell</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-4 news hidden-xs">
+                <h2>News</h2>
+                <ul class="readmore">
+                </ul>
+            </div>
+        </div>
+
+        <!-- Modals -->
+        <div class="modal fade" id="modal-cities" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Choose a city...</h4>
+                    </div>
+                    <div class="modal-body cities">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modal-pawn-shop" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Pawn Shop</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <p class="col-md-12">You currently owe <span class="debt"></span>$.</p>
+                            <div class="col-md-6">
+                                <label>
+                                    Land more money :
+                                    <div class="input-group">
+                                        <input type="number" min="0" value="0" class="form-control" />
+                                        <span class="input-group-btn">
+                                            <button class="btn land" type="button" data-dismiss="modal">Land</button>
+                                        </span>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="col-md-6 col-xs-12">
+                                <label class="form-group">
+                                    Pay your debt :
+                                    <div class="input-group">
+                                        <input type="number" min="0" value="0" class="form-control" />
+                                        <span class="input-group-btn">
+                                            <button class="btn pay-max" type="button">Max</button>
+                                            <button class="btn pay" type="button" data-dismiss="modal">Pay</button>
+                                        </span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modal-inventory" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Inventory</h4>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-condensed">
+                            <tbody>
+                                <tr>
+                                    <th>Item</th>
+                                    <th class="text-center hidden-xs">Stock</th>
+                                    <th><span class="visible-xs">Stock</span></th>
+                                    <th class="text-center">Action</th>
+                                </tr>
+                                <tr class="template hidden">
+                                    <td>Item</td>
+                                    <td class="text-center hidden-xs">Qte</td>
+                                    <td class="form-group">
+                                        <label class="input-group" style="width: 100%;">
+                                            <input type="number" min="0" value="0" class="form-control" />
+                                            <span class="input-group-btn hidden-xs">
+                                                <button class="btn max" type="button">Max</button>
+                                            </span>
+                                        </label>
+                                    </td>
+                                    <td class="text-center form-group">
+                                        <span class="input-group-btn">
+                                            <button class="btn consume"><i class="glyphicon glyphicon-cutlery"></i></button>
+                                            <button class="btn drop"><i class="glyphicon glyphicon-hand-down"></i></button>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modal-transaction" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title"></h4>
+                    </div>
+                    <div class="modal-body row">
+                        <div class="col-md-6 col-xs-12">
+                            <label class="form-group">
+                                How much ?
+                                <div class="input-group">
+                                    <input type="number" min="0" value="0" class="form-control" />
+                                    <span class="input-group-btn">
+                                        <button class="btn max" type="button">Max</button>
+                                        <button class="btn action" type="button" data-dismiss="modal"></button>
+                                    </span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modal-about" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">About DopeWars.js</h4>
+                    </div>
+                    <div class="modal-body">
+                    <p>
+                        DopeWars.js was written by <a href="https://github.com/316k/">Nicolas Hurtubise</a>. This game was inspired by the UNIX rewrite of the MS-DOS program <em>Dope Wars</em>, which in turn was inspired by John E. Dell's "Drug Wars" game. Yup, that game has a long history. Though it's probably the first one to implement drug-consuming.
+                    </p>
+                    <p>
+                        This game is licensed under the MIT license.
+                    </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modal-high-score" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">High Scores</h4>
+                    </div>
+                    <div class="modal-body">
+                        <ul>
+                        </ul>
+                        <p><span class="final-score"></span> <span class="message"></span></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="assets/js/jquery-1.11.0.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/readmore.min.js"></script>
+        <script src="assets/js/data.js"></script>
+        <script src="assets/js/view.js"></script>
+        <script src="assets/js/models.js"></script>
+        <script src="assets/js/controller.js"></script>
+    </body>
+</html>
