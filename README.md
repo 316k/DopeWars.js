@@ -1,5 +1,5 @@
 DopeWars.js
-###########
+===========
 
 A drug-dealing game set in streets of Montreal City.
 
