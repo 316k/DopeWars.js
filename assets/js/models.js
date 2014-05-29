@@ -56,7 +56,7 @@ function array_sum(array) {
 // GameManager
 function GameManager() {
     this.day = 1;
-    this.end = 2;
+    this.end = 30;
     this.debt = 5500;
     this.bank_deposit = 0;
     this.stone_level = 0;
