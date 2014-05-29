@@ -70,7 +70,7 @@ function Controller() {
         if(self.game.day == self.game.end) {
             self.game_over();
         } else {
-            self.news_manager.add(new News('Moving to ' + self.game.city.city_name, 'move'));
+            self.news_manager.add(new News('Moving to ' + DataCenter.cities[$(this).data('city')].name, 'move'));
 
             self.game.new_city($(this).data('city'), self.news_manager);
             self.view.refresh_available_drugs(self.game.city.available_drugs);
