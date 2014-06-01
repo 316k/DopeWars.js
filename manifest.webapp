@@ -10,5 +10,6 @@
     "name": "316k",
     "url": "http://wasting-ti.me/"
   },
-  "default_locale": "en"
+  "default_locale": "en",
+  "version": "1.1"
 }
