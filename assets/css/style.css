@@ -41,12 +41,14 @@ table tr:hover {
     background-color: #111;
 }
 
-button.btn {
+button.btn, .btn-default {
     background-color: #333;
+    border: none;
     color: #E4CBB6;
 }
 
-button.btn:active, button.btn:hover, button.btn:focus {
+button.btn:active, button.btn:hover, button.btn:focus,
+.btn-default:active, .btn-default:hover, .btn-default:focus {
     background-color: #666;
     color: #DDF;
 }
@@ -132,11 +134,15 @@ label.form-group {
 }
 
 .modal-content {
-    background-color: #111;
+    background-color: #333;
+}
+
+.modal-content button.btn {
+    background-color: #222;
 }
 
 .modal-header {
-    border-bottom: solid 2px #010101;
+    border-bottom: solid 1px #010101;
 }
 
 .modal-header .close {
@@ -144,5 +150,5 @@ label.form-group {
 }
 
 .modal-footer {
-    border-top: solid 2px #010101;
+    border-top: solid 1px #010101;
 }
