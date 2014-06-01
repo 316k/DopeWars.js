@@ -20,6 +20,11 @@ nav.navbar {
     color: #999;
 }
 
+.navbar-move {
+    margin: 5px;
+    float: right;
+}
+
 .navbar-brand.xs-stats {
     top: 0px;
     position: absolute;
