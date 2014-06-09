@@ -1,101 +1,92 @@
 var DataCenter = {
     drugs: [
         {
-            "name": "Acid",
+            "name": "acid",
             "minimum_price": 1000,
             "maximum_price": 4400,
             "cheap": {
-                "announce": "The black market is saturated with acid.",
                 "minimum_price": 400,
                 "maximum_price": 1100,
             },
             "expensive": {
-                "announce": "Cops have recently arrested acid dealers here. Prices are boosted...",
                 "minimum_price": 5000,
                 "maximum_price": 8000,
             }
         },
         {
-            "name": "Cocaine",
+            "name": "cocaine",
             "minimum_price": 15000,
             "maximum_price": 29000,
             "expensive": {
-                "announce": "Addicts will buy cocaine at crazy prices !",
                 "minimum_price": 40000,
                 "maximum_price": 70000,
             }
         },
         {
-            "name": "Hash",
+            "name": "hash",
             "minimum_price": 480,
             "maximum_price": 1280,
             "cheap": {
-                "announce": "Hash is on sale for a limited time !",
                 "minimum_price": 130,
                 "maximum_price": 400,
             }
         },
         {
-            "name": "Heroin",
+            "name": "heroin",
             "minimum_price": 5500,
             "maximum_price": 13000,
             "expensive": {
-                "announce": "Addicts will buy heroin at crazy prices !",
                 "minimum_price": 12000,
                 "maximum_price": 19000,
             }
         },
         {
-            "name": "Glue",
+            "name": "glue",
             "minimum_price": 11,
             "maximum_price": 75,
             "cheap": {
-                "announce": "Some pushers have stolen a hardware store's stock of glue.",
                 "minimum_price": 2,
                 "maximum_price": 15,
             }
         },
         {
-            "name": "Ecstasy",
+            "name": "ecstasy",
             "minimum_price": 1500,
             "maximum_price": 4400
         },
         {
-            "name": "Opium",
+            "name": "opium",
             "minimum_price": 540,
             "maximum_price": 1250,
             "expensive": {
-                "announce": "The opium market is unbelievably expensive !",
                 "minimum_price": 34000,
                 "maximum_price": 68000,
             }
         },
         {
-            "name": "PCP",
+            "name": "pcp",
             "minimum_price": 1000,
             "maximum_price": 2500
         },
         {
-            "name": "Mush",
+            "name": "mush",
             "minimum_price": 630,
             "maximum_price": 1300
         },
         {
-            "name": "Speed",
+            "name": "speed",
             "minimum_price": 90,
             "maximum_price": 250,
             "expensive": {
-                "announce": "Speed is pretty expensive here...",
                 "minimum_price": 2000,
                 "maximum_price": 5000,
             }
         },
         {
-            "name": "Marijuana",
+            "name": "marijuana",
             "minimum_price": 315,
             "maximum_price": 890,
             "cheap": {
-                "announce": "Happy 4/20 ! Cheap weed for everyone !",
                 "minimum_price": 60,
                 "maximum_price": 220,
             }
@@ -103,44 +94,44 @@ var DataCenter = {
     ],
     cities: [
         {
-            "name": "Laval",
+            "name": "laval",
             "cops": 10,
             "min_drugs": 5,
             "max_drugs": 10
         },
         {
-            "name": "Mont-Royal",
+            "name": "mont-royal",
             "cops": 5,
             "min_drugs": 7
         },
         {
-            "name": "Lafontaine Park",
+            "name": "lafontaine-park",
             "cops": 15,
             "min_drugs": 6
         },
         {
-            "name": "Berry-UQAM Metro",
+            "name": "berry-uqam-metro",
             "cops": 80,
             "min_drugs": 4
         },
         {
-            "name": "Sainte-Hélène Island",
+            "name": "sainte-helene-island",
             "cops": 30,
             "min_drugs": 6
         },
         {
-            "name": "Vieux-Port",
+            "name": "vieux-port",
             "cops": 70,
             "min_drugs": 4,
             "max_drugs": 10
         },
         {
-            "name": "Westmount",
+            "name": "westmount",
             "cops": 70,
             "min_drugs": 6
         },
         {
-            "name": "Notre-Dame-de-Grâce",
+            "name": "notre-dame-de-grace",
             "cops": 20,
             "min_drugs": 5
         },

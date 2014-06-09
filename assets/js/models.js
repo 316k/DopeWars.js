@@ -183,7 +183,7 @@ Coat.prototype.score = function(game, prices) {
 
 // City
 function City(number, news_manager) {
-    this.city_name = DataCenter.cities[number].name;
+    this.city_name = navigator.mozL10n.get('city-' + DataCenter.cities[number].name);
     this.is_cop = Math.random()*100 < DataCenter.cities[number].cops;
     this.prices = [];
     this.number = number;
@@ -214,12 +214,16 @@ function City(number, news_manager) {
                 minimum_price = DataCenter.drugs[drug].cheap.minimum_price;
                 maximum_price = DataCenter.drugs[drug].cheap.maximum_price;
 
-                news_manager.add(new News(DataCenter.drugs[drug].cheap.announce));
+                var id = 'dope-' + DataCenter.drugs[drug].name + '-cheap';
+
+                news_manager.add(new News(navigator.mozL10n.get(id)));
             } else if('expensive' in DataCenter.drugs[drug] && rand(0, 100) < 5 && news_manager) {
                 minimum_price = DataCenter.drugs[drug].expensive.minimum_price;
                 maximum_price = DataCenter.drugs[drug].expensive.maximum_price;
 
-                news_manager.add(new News(DataCenter.drugs[drug].expensive.announce));
+                var id = 'dope-' + DataCenter.drugs[drug].name + '-expensive';
+
+                news_manager.add(new News(navigator.mozL10n.get(id)));
             }
 
             this.prices[drug] = Math.round(rand(minimum_price, maximum_price));

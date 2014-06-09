@@ -1,7 +1,7 @@
-var c;
 $(document).ready(function() {
     navigator.mozL10n.ready(function() {
-        c = new Controller();
+        // Useful when debugging
+        navigator.Controller = new Controller();
     });
 });
 
@@ -72,7 +72,9 @@ function Controller() {
         if(self.game.day == self.game.end) {
             self.game_over();
         } else {
-            self.news_manager.add(new News(navigator.mozL10n.get('notification-move', {city: DataCenter.cities[$(this).data('city')].name}), 'move'));
+            self.news_manager.add(new News(navigator.mozL10n.get('notification-move', {
+                city: navigator.mozL10n.get('city-' + DataCenter.cities[$(this).data('city')].name)
+            }), 'move'));
 
             self.game.new_city($(this).data('city'), self.news_manager);
             self.view.refresh_available_drugs(self.game.city.available_drugs);
@@ -178,7 +180,8 @@ function Controller() {
 
         $('#modal-transaction').removeClass('sell');
         $('#modal-transaction').addClass('buy').data('drug', $(this).parent().parent().data('drug'));
-        $('#modal-transaction .modal-header h4').text(navigator.mozL10n.get('buy') + ' ' + DataCenter.drugs[$(this).parent().parent().data('drug')].name);
+        $('#modal-transaction .modal-header h4').text(navigator.mozL10n.get('buy')
+            + ' ' + navigator.mozL10n.get('dope-' + DataCenter.drugs[$(this).parent().parent().data('drug')].name));
         $('#modal-transaction .modal-body .action').text(navigator.mozL10n.get('buy'));
 
         $('#modal-transaction.buy button.max').click(function() {
@@ -202,7 +205,8 @@ function Controller() {
 
         $('#modal-transaction').removeClass('buy');
         $('#modal-transaction').addClass('sell').data('drug', $(this).parent().parent().data('drug'));
-        $('#modal-transaction .modal-header h4').text(navigator.mozL10n.get('sell') + ' ' + DataCenter.drugs[$(this).parent().parent().data('drug')].name);
+        $('#modal-transaction .modal-header h4').text(navigator.mozL10n.get('sell')
+            + ' ' + navigator.mozL10n.get('dope-' + DataCenter.drugs[$(this).parent().parent().data('drug')].name));
         $('#modal-transaction .modal-body .action').text(navigator.mozL10n.get('sell'));
 
         $('#modal-transaction.sell button.max').click(function() {
@@ -238,7 +242,11 @@ Controller.prototype.buy = function(index, quantity) {
     if(this.coat.can_buy(this.game.city.prices[index], quantity)) {
         this.coat.buy(index, this.game.city.prices[index], quantity);
 
-        this.news_manager.add(new News(navigator.mozL10n.get('notification-bought', {quantity: quantity, drug: DataCenter.drugs[index].name, price: this.game.city.prices[index]}), 'drug'));
+        this.news_manager.add(new News(navigator.mozL10n.get('notification-bought', {
+            quantity: quantity,
+            drug: navigator.mozL10n.get('dope-' + DataCenter.drugs[index].name),
+            price: this.game.city.prices[index]
+        }), 'drug'));
 
         this.view.refresh_quantities(this.coat.drugs);
         this.view.refresh_stats(this.game, this.coat);
@@ -261,7 +269,11 @@ Controller.prototype.sell = function(index, quantity) {
     if(this.coat.can_sell(index, quantity)) {
         this.coat.sell(index, this.game.city.prices[index], quantity);
 
-        this.news_manager.add(new News(navigator.mozL10n.get('notification-sold', {quantity: quantity, drug: DataCenter.drugs[index].name, price: this.game.city.prices[index]}), 'drug'));
+        this.news_manager.add(new News(navigator.mozL10n.get('notification-sold', {
+            quantity: quantity,
+            drug: navigator.mozL10n.get('dope-' + DataCenter.drugs[index].name),
+            price: this.game.city.prices[index]
+        }), 'drug'));
         this.view.refresh_stats(this.game, this.coat);
         this.view.refresh_quantities(this.coat.drugs);
     } else {

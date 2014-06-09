@@ -18,7 +18,7 @@ View.prototype.setup_drugs = function() {
 
         row.data('drug', drug);
 
-        row.children().first().text(drugs[drug].name);
+        row.children().first().text(navigator.mozL10n.get('dope-' + drugs[drug].name));
 
         this.drugs_container.append(row);
     }
@@ -42,7 +42,8 @@ View.prototype.setup_drugs = function() {
 
 View.prototype.setup_cities = function() {
     for(var city in DataCenter.cities) {
-        $('#modal-cities .cities').append('<button class="btn" data-city="' + city + '">' + DataCenter.cities[city].name + '</button> ');
+        $('#modal-cities .cities').append('<button class="btn" data-city="' + city + '">' + 
+            navigator.mozL10n.get('city-' + DataCenter.cities[city].name) + '</button> ');
     }
     $('#modal-cities .cities button.btn').first().addClass('current');
 }
@@ -125,7 +126,7 @@ View.prototype.refresh_inventory = function(drugs) {
     for(var drug in drugs) {
         var row = $('#modal-inventory tr:nth-child(' + (parseInt(drug) + 2) + ')').removeClass('hidden');
 
-        row.children().first().text(DataCenter.drugs[drug].name);
+        row.children().first().text(navigator.mozL10n.get('dope-' + DataCenter.drugs[drug].name));
         row.children().first().next().text(drugs[drug] || 0);
         row.children().first().next().next().children().first().children().first().val(drugs[drug] || 0).attr('max', drugs[drug] || 0);
 
