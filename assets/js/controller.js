@@ -1,6 +1,8 @@
 var c;
 $(document).ready(function() {
-    c = new Controller();
+    navigator.mozL10n.ready(function() {
+        c = new Controller();
+    });
 });
 
 function Controller() {
