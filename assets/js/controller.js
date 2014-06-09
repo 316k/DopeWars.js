@@ -21,7 +21,7 @@ function Controller() {
 
     this.news_manager = new NewsManager();
 
-    this.news_manager.add(new News('Welcome to DopeWars.js !'));
+    this.news_manager.add(new News(navigator.mozL10n.get('notification-welcome')));
 
     this.view.refresh_prices(this.game.city.prices);
     this.view.refresh_available_drugs(this.game.city.available_drugs);
@@ -72,7 +72,7 @@ function Controller() {
         if(self.game.day == self.game.end) {
             self.game_over();
         } else {
-            self.news_manager.add(new News('Moving to ' + DataCenter.cities[$(this).data('city')].name, 'move'));
+            self.news_manager.add(new News(navigator.mozL10n.get('notification-move', {city: DataCenter.cities[$(this).data('city')].name}), 'move'));
 
             self.game.new_city($(this).data('city'), self.news_manager);
             self.view.refresh_available_drugs(self.game.city.available_drugs);
@@ -90,7 +90,7 @@ function Controller() {
             self.view.refresh_stats(self.game, self.coat);
 
             if(self.game.day == self.game.end) {
-                $('a[href=#modal-cities]').html('<i class="glyphicon glyphicon-stop"></i> End').attr('href', '#').click(function() {
+                $('a[href=#modal-cities]').html('<i class="glyphicon glyphicon-stop"></i> ' + navigator.mozL10n.get('end')).attr('href', '#').click(function() {
                     $('#modal-cities .cities button[data-city]:not(.current)').first().click();
                 });
             }
@@ -178,8 +178,8 @@ function Controller() {
 
         $('#modal-transaction').removeClass('sell');
         $('#modal-transaction').addClass('buy').data('drug', $(this).parent().parent().data('drug'));
-        $('#modal-transaction .modal-header h4').text('Buy ' + DataCenter.drugs[$(this).parent().parent().data('drug')].name);
-        $('#modal-transaction .modal-body .action').text('Buy');
+        $('#modal-transaction .modal-header h4').text(navigator.mozL10n.get('buy') + ' ' + DataCenter.drugs[$(this).parent().parent().data('drug')].name);
+        $('#modal-transaction .modal-body .action').text(navigator.mozL10n.get('buy'));
 
         $('#modal-transaction.buy button.max').click(function() {
             var item_number = parseInt($(this).parent().parent().parent().parent().parent().parent().parent().parent().data('drug'));
@@ -202,10 +202,11 @@ function Controller() {
 
         $('#modal-transaction').removeClass('buy');
         $('#modal-transaction').addClass('sell').data('drug', $(this).parent().parent().data('drug'));
-        $('#modal-transaction .modal-header h4').text('Sell ' + DataCenter.drugs[$(this).parent().parent().data('drug')].name);
-        $('#modal-transaction .modal-body .action').text('Sell');
+        $('#modal-transaction .modal-header h4').text(navigator.mozL10n.get('sell') + ' ' + DataCenter.drugs[$(this).parent().parent().data('drug')].name);
+        $('#modal-transaction .modal-body .action').text(navigator.mozL10n.get('sell'));
 
         $('#modal-transaction.sell button.max').click(function() {
+            // Hmmm... Maybe this isn't the best way to do it...
             var index = parseInt($(this).parent().parent().parent().parent().parent().parent().parent().parent().data('drug'));
             var quantity = self.coat.drugs[index] || 0;
 
@@ -237,12 +238,12 @@ Controller.prototype.buy = function(index, quantity) {
     if(this.coat.can_buy(this.game.city.prices[index], quantity)) {
         this.coat.buy(index, this.game.city.prices[index], quantity);
 
-        this.news_manager.add(new News('Bought ' + quantity + ' ' + DataCenter.drugs[index].name + ' for ' + this.game.city.prices[index] + ' $/each', 'drug'));
+        this.news_manager.add(new News(navigator.mozL10n.get('notification-bought', {quantity: quantity, drug: DataCenter.drugs[index].name, price: this.game.city.prices[index]}), 'drug'));
 
         this.view.refresh_quantities(this.coat.drugs);
         this.view.refresh_stats(this.game, this.coat);
     } else {
-        this.news_manager.add(new News('You need more ' + (this.coat.available_space() >= quantity ? 'money' : 'space') + ' !', 'error'));
+        this.news_manager.add(new News(navigator.mozL10n.get('notification-need-more-' + (this.coat.available_space() >= quantity ? 'money' : 'space')), 'error'));
         return_value = false;
     }
 
@@ -260,11 +261,11 @@ Controller.prototype.sell = function(index, quantity) {
     if(this.coat.can_sell(index, quantity)) {
         this.coat.sell(index, this.game.city.prices[index], quantity);
 
-        this.news_manager.add(new News('Sold ' + quantity + ' ' + DataCenter.drugs[index].name + ' for ' + this.game.city.prices[index] + ' $/each', 'drug'));
+        this.news_manager.add(new News(navigator.mozL10n.get('notification-sold', {quantity: quantity, drug: DataCenter.drugs[index].name, price: this.game.city.prices[index]}), 'drug'));
         this.view.refresh_stats(this.game, this.coat);
         this.view.refresh_quantities(this.coat.drugs);
     } else {
-        this.news_manager.add(new News('You cannot sell stuff you do not own !', 'error'));
+        this.news_manager.add(new News(navigator.mozL10n.get('notification-do-not-own'), 'error'));
         return_value = false;
     }
 
@@ -273,10 +274,10 @@ Controller.prototype.sell = function(index, quantity) {
 };
 
 Controller.prototype.new_name = function() {
-    var name = prompt('Yo dude ! What\'s your name ?');
+    var name = prompt(navigator.mozL10n.get('prompt-name'));
 
     while(!name) {
-        name = prompt("*sigh*... Seriously, what's your name ?");
+        name = prompt(navigator.mozL10n.get('prompt-name-again'));
     }
 
     window.localStorage.setItem('player_name', name);
@@ -285,13 +286,13 @@ Controller.prototype.new_name = function() {
 Controller.prototype.game_over = function() {
     var score = this.coat.score(this.game, this.game.city.prices);
 
-    var high_score_string = score + '$ <span style="font-size: medium;"> <span class="hidden-xs">.................................................</span> by ' + this.game.player_name() + ' <small class="hidden-xs">on ' + new Date().toLocaleString() + '</small></span>';
+    var high_score_string = score + '$ <span style="font-size: medium;"> <span class="hidden-xs">.................................................</span> ' + navigator.mozL10n.get('by') + ' ' + this.game.player_name() + ' <small class="hidden-xs"> - ' + new Date().toLocaleString() + '</small></span>';
 
     this.game.add_high_score(high_score_string);
     this.view.refresh_high_score(this.game.high_score());
 
-    $('#modal-high-score .modal-footer .btn').text('New Game !');
-    $('#modal-high-score .modal-body .final-score').html('<b>Final Score</b> : ' + score + '$');
+    $('#modal-high-score .modal-footer .btn').text(navigator.mozL10n.get('new-game') + ' !');
+    $('#modal-high-score .modal-body .final-score').html('<b>' + navigator.mozL10n.get('final-score') + '</b> : ' + score + '$');
     $('#modal-high-score .modal-body .message').html('.....<span class="hidden-xs">............................................</span> ' + this.game.message(score));
 
     $('#modal-high-score').on('hidden.bs.modal', function() {
