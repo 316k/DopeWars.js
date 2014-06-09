@@ -67,8 +67,8 @@ View.prototype.refresh_news = function(notifications) {
 
     $('.news.visible-xs').readmore({
         maxHeight: 40,
-        moreLink: '<a href="#" style="padding-top: 15px; text-align: center; font-size: small;">See all recent news</a>',
-        lessLink: '<a href="#" style="padding-top: 15px; text-align: center; font-size: small;">Hide</a>',
+        moreLink: '<a href="#" style="padding-top: 15px; text-align: center; font-size: small;">' + navigator.mozL10n.get('see-recent-news') + '</a>',
+        lessLink: '<a href="#" style="padding-top: 15px; text-align: center; font-size: small;">' + navigator.mozL10n.get('hide') + '</a>',
     });
 };
 
@@ -135,7 +135,7 @@ View.prototype.refresh_inventory = function(drugs) {
     }
 
     if(array_sum(drugs) == 0) {
-        $('#modal-inventory p').text('No drug yet...');
+        $('#modal-inventory p').text(navigator.mozL10n.get('no-drug-yet'));
     } else {
         $('#modal-inventory p').text('');
     }
