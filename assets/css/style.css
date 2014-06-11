@@ -1,6 +1,7 @@
 body {
     background-color: black;
     color: #CE8C39;
+    overflow-x: hidden;
 }
 
 h1, h2, h3 {
@@ -44,6 +45,10 @@ button.navbar-toggle {
 
 table tr:hover {
     background-color: #111;
+}
+
+.table.drugs td.visible-xs button {
+    font-size: x-small;
 }
 
 button.btn, .btn-default {
