@@ -15,7 +15,7 @@ For each bug you resolve, you get **300 Points** and for each feature you implem
 * More info on handheld menu bar - City, Day, Debt, ... (fade between informations)
 * Switch between different stylesheets (themes - a lighter theme would be cool)
 * More languages (localization)
-
+* Mobile interface with +1/+10/-1/-10 buttons instead of input (too violent)
 
 ## Need more informations ?
 
