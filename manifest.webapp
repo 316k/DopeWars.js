@@ -3,13 +3,21 @@
   "description": "A drug-dealing game set in streets of Montreal City",
   "launch_path": "/index.html",
   "icons": {
-    "128": "/icon-128.png",
-    "32": "/icon-32.png"
+    "32": "/icon-32.png",
+    "128": "/icon-128.png"
   },
   "developer": {
     "name": "316k",
     "url": "http://wasting-ti.me/"
   },
   "default_locale": "en",
-  "version": "1.1"
+  "version": "1.2 - Localize it !",
+  "locales": {
+    "fr": {
+      "description": "Un jeu de revente de drogue dans les rues de Montréal"
+    },
+    "en": {
+      "description": "A drug-dealing game set in streets of Montreal City"
+    }
+  }
 }
