@@ -112,13 +112,13 @@ GameManager.prototype.reset_high_score = function() {
 };
 
 GameManager.prototype.message = function(score) {
-    for(var max_score in DataCenter.messages) {
-        if(parseInt(max_score) <= score) {
-            return DataCenter.messages[parseInt(max_score)];
+    for(var i in DataCenter.messages) {
+        var max_score = DataCenter.messages[i];
+        if(max_score <= score) {
+            return navigator.mozL10n.get('message-' + DataCenter.messages[i]);
         }
     }
-
-    return "I won't say nothin' without my lawyer with me...";
+    return navigator.mozL10n.get('message-bad');
 }
 
 // Coat

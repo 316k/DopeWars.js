@@ -136,21 +136,21 @@ var DataCenter = {
             "min_drugs": 5
         },
     ],
-    messages: {
-        "100000000": "Com'on... you clearly cheated on that one.",
-        "1000000": "You clearly are the best dealer in the universe !",
-        "400000": "That's just way too much money for me.",
-        "300000": "Perfect !",
-        "200000": "Excellent !",
-        "100000": "Wow...",
-        "50000": "Quite good !",
-        "10000": "Not bad...",
-        "5000": "Almost an acceptable score...",
-        "1000": "Why don't you try making some money for once ?",
-        "0": "What a bad dealer...",
-        "-4050": "Why do you even try ?",
-        "-10000": "You know, people used to make money with this job.",
-        "-99999": "You must be the worst drug dealer ever. In the universe. Of all time.",
-        "-100000": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-    }
+    messages: [
+        100000000,
+        1000000,
+        400000,
+        300000,
+        200000,
+        100000,
+        50000,
+        10000,
+        5000,
+        1000,
+        0,
+        -4050,
+        -10000,
+        -99999,
+        -100000,
+    ]
 };
