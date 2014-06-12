@@ -16,6 +16,7 @@ For each bug you resolve, you get **300 Points** and for each feature you implem
 * Switch between different stylesheets (themes - a lighter theme would be cool)
 * More languages (localization)
 * Mobile interface with +1/+10/-1/-10 buttons instead of input (too violent)
+* Restrict the loanable amount of money so that you can't own more than 2000$ after the loan
 
 ## Need more informations ?
 
