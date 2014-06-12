@@ -11,7 +11,7 @@
     "url": "http://wasting-ti.me/"
   },
   "default_locale": "en",
-  "version": "1.2 - Localize it !",
+  "version": "1.2",
   "locales": {
     "fr": {
       "description": "Un jeu de revente de drogue dans les rues de Montréal"
