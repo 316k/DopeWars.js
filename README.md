@@ -10,3 +10,10 @@ DopeWars.js was written by Nicolas Hurtubise. This game was inspired by the UNIX
 ## License
 
 This game is licensed under the MIT license.
+
+## Contributors
+
+* Nicolas Hurtubise *(Main developer)*
+* djura-san *(Serbian (latin and cyrillic) translation)*
+
+To contribute on this project, just fork [this repository](https://github.com/316k/DopeWars.js/) and send me a pull request.
