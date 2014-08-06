@@ -51,6 +51,15 @@ table tr:hover {
     font-size: x-small;
 }
 
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+    border-top: 1px solid #555;
+}
+
 button.btn, .btn-default {
     background-color: #333;
     border: none;
